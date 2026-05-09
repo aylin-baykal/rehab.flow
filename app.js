@@ -182,7 +182,21 @@ function loadBodyParts() {
     const button =
       document.createElement("button");
 
-    button.innerText = part;
+   const icons = {
+  Omuz: "🦾",
+  Dirsek: "💪",
+  "El Bileği": "✋",
+  Boyun: "🧠",
+  Sırt: "🔙",
+  Bel: "🦴",
+  Kalça: "🦵",
+  Diz: "🦿",
+  "Ayak Bileği": "👣",
+  Ayak: "🦶"
+};
+
+button.innerText =
+  `${icons[part] || "📍"} ${part}`;
 
     button.onclick = () =>
       showDiseases(part);

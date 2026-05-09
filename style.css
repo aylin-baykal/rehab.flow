@@ -73,3 +73,56 @@ button:hover {
   color: #555;
   line-height: 1.5;
 }
+.body-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.human-container {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.human-body {
+  width: 100%;
+  max-width: 300px;
+}
+
+#body-parts {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#body-parts button {
+  min-width: 140px;
+}
+
+#disease-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#disease-list button {
+  background: #0f766e;
+}
+
+#disease-list button:hover {
+  background: #115e59;
+}
+
+#exercise-section {
+  margin-top: 40px;
+}
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
