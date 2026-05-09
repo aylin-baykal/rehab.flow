@@ -1,0 +1,58 @@
+<svg viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- BAŞ -->
+  <circle cx="100" cy="40" r="20"
+    fill="#ddd"
+    onclick="selectBodyPart('Boyun')" />
+
+  <!-- BOYUN -->
+  <rect x="90" y="60" width="20" height="20"
+    fill="#ddd"
+    onclick="selectBodyPart('Boyun')" />
+
+  <!-- OMUZ -->
+  <rect x="50" y="80" width="100" height="30"
+    fill="#ccc"
+    onclick="selectBodyPart('Omuz')" />
+
+  <!-- GÖĞÜS / SIRT -->
+  <rect x="70" y="110" width="60" height="80"
+    fill="#ddd"
+    onclick="selectBodyPart('Sırt')" />
+
+  <!-- BEL -->
+  <rect x="75" y="190" width="50" height="40"
+    fill="#ccc"
+    onclick="selectBodyPart('Bel')" />
+
+  <!-- KALÇA -->
+  <rect x="70" y="230" width="60" height="40"
+    fill="#ddd"
+    onclick="selectBodyPart('Kalça')" />
+
+  <!-- KOL SOL -->
+  <rect x="20" y="90" width="30" height="100"
+    fill="#ddd"
+    onclick="selectBodyPart('Dirsek')" />
+
+  <!-- KOL SAĞ -->
+  <rect x="150" y="90" width="30" height="100"
+    fill="#ddd"
+    onclick="selectBodyPart('Dirsek')" />
+
+  <!-- BACAK SOL -->
+  <rect x="75" y="270" width="25" height="120"
+    fill="#ccc"
+    onclick="selectBodyPart('Diz')" />
+
+  <!-- BACAK SAĞ -->
+  <rect x="100" y="270" width="25" height="120"
+    fill="#ccc"
+    onclick="selectBodyPart('Diz')" />
+
+  <!-- AYAK -->
+  <rect x="70" y="390" width="60" height="30"
+    fill="#ddd"
+    onclick="selectBodyPart('Ayak')" />
+
+</svg>
