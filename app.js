@@ -272,3 +272,6 @@ function showExercises(part, disease) {
     cards.appendChild(card);
   });
 }
+function selectBodyPart(part) {
+  showDiseases(part);
+}
