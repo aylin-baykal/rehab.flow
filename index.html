@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fizyoterapi Uygulaması</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Fizyoterapi Rehberi</h1>
+
+    <div id="role-selection">
+      <h2>Kullanıcı Seç</h2>
+
+      <button onclick="selectRole('Hasta')">
+        Hasta
+      </button>
+
+      <button onclick="selectRole('Fizyoterapist')">
+        Fizyoterapist
+      </button>
+    </div>
+
+    <div id="body-section" class="hidden">
+      <h2>Vücut Bölgesi Seç</h2>
+
+      <div id="body-parts"></div>
+    </div>
+
+    <div id="disease-section" class="hidden">
+      <h2>Rahatsızlıklar</h2>
+
+      <ul id="disease-list"></ul>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
