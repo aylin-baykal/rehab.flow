@@ -1,37 +1,169 @@
-const bodyData = {
-  Omuz: [
-    "Rotator Cuff Sendromu",
-    "Donuk Omuz",
-    "Omuz Sıkışma Sendromu",
-    "Biceps Tendiniti"
-  ],
+const appData = {
 
-  Dirsek: [
-    "Tenisçi Dirseği",
-    "Golfçü Dirseği",
-    "Kubital Tünel Sendromu"
-  ],
+  Omuz: {
+    "Rotator Cuff Sendromu": [
+      "Pendulum Egzersizi",
+      "İç Rotasyon Band Egzersizi",
+      "Dış Rotasyon Egzersizi",
+      "Scapula Stabilizasyonu"
+    ],
 
-  Boyun: [
-    "Servikal Disk Hernisi",
-    "Düz Boyun",
-    "Boyun Kas Spazmı"
-  ],
+    "Donuk Omuz": [
+      "Duvar Tırmanma",
+      "Sopa Egzersizi",
+      "Pendulum",
+      "Omuz Mobilizasyonu"
+    ],
 
-  Bel: [
-    "Bel Fıtığı",
-    "Siyatik",
-    "Mekanik Bel Ağrısı"
-  ],
+    "Omuz Sıkışma Sendromu": [
+      "Scaption",
+      "Postür Egzersizleri",
+      "Theraband Rotasyon",
+      "Serratus Aktivasyonu"
+    ]
+  },
 
-  Diz: [
-    "ACL Yaralanması",
-    "Menisküs Yaralanması",
-    "Runner's Knee"
-  ]
+  Dirsek: {
+    "Tenisçi Dirseği": [
+      "Wrist Extension Stretch",
+      "Eksantrik Bilek Egzersizi",
+      "Kavrama Güçlendirme"
+    ],
+
+    "Golfçü Dirseği": [
+      "Flexor Stretch",
+      "Pronasyon Egzersizi",
+      "Direnç Bandı Çalışması"
+    ]
+  },
+
+  "El Bileği": {
+    "Karpal Tünel Sendromu": [
+      "Median Sinir Gliding",
+      "Bilek Fleksör Stretch",
+      "Tendon Kaydırma"
+    ],
+
+    "De Quervain": [
+      "Başparmak Stretch",
+      "İzometrik Güçlendirme",
+      "Mobilizasyon"
+    ]
+  },
+
+  Boyun: {
+    "Servikal Disk Hernisi": [
+      "Chin Tuck",
+      "Boyun İzometrik",
+      "Postür Eğitimi"
+    ],
+
+    "Düz Boyun": [
+      "Derin Fleksör Aktivasyonu",
+      "Scapula Retraksiyonu",
+      "Göğüs Stretch"
+    ]
+  },
+
+  Sırt: {
+    "Kifoz": [
+      "Thoracic Extension",
+      "Foam Roller Mobilizasyonu",
+      "Postür Egzersizi"
+    ],
+
+    "Skolyoz": [
+      "Core Stabilizasyon",
+      "Nefes Egzersizi",
+      "Asimetrik Güçlendirme"
+    ]
+  },
+
+  Bel: {
+    "Bel Fıtığı": [
+      "McKenzie Extension",
+      "Core Stabilizasyon",
+      "Pelvik Tilt"
+    ],
+
+    "Siyatik": [
+      "Sinir Mobilizasyonu",
+      "Piriformis Stretch",
+      "Hamstring Stretch"
+    ],
+
+    "Mekanik Bel Ağrısı": [
+      "Bridge",
+      "Bird Dog",
+      "Dead Bug"
+    ]
+  },
+
+  Kalça: {
+    "Piriformis Sendromu": [
+      "Piriformis Stretch",
+      "Glute Bridge",
+      "Clamshell"
+    ],
+
+    "Trokanterik Bursit": [
+      "Yan Yatma Abduksiyon",
+      "IT Band Stretch",
+      "Kalça Stabilizasyon"
+    ]
+  },
+
+  Diz: {
+    "ACL Yaralanması": [
+      "Quad Set",
+      "Straight Leg Raise",
+      "Denge Egzersizi"
+    ],
+
+    "Menisküs Yaralanması": [
+      "Mini Squat",
+      "Hamstring Curl",
+      "Step Up"
+    ],
+
+    "Patellofemoral Ağrı": [
+      "VMO Aktivasyonu",
+      "Terminal Knee Extension",
+      "Kalça Güçlendirme"
+    ]
+  },
+
+  "Ayak Bileği": {
+    "Ayak Bileği Burkulması": [
+      "Denge Tahtası",
+      "Theraband Egzersizi",
+      "Tek Ayak Duruş"
+    ],
+
+    "Aşil Tendiniti": [
+      "Eksantrik Heel Raise",
+      "Calf Stretch",
+      "Ayak Bileği Mobilizasyonu"
+    ]
+  },
+
+  Ayak: {
+    "Plantar Fasiit": [
+      "Plantar Fasya Stretch",
+      "Towel Curl",
+      "Calf Stretch"
+    ],
+
+    "Düz Tabanlık": [
+      "Short Foot Exercise",
+      "Ayak Ark Güçlendirme",
+      "Denge Çalışması"
+    ]
+  }
 };
 
 function selectRole(role) {
+
   document.getElementById("body-section")
     .classList.remove("hidden");
 
@@ -45,7 +177,7 @@ function loadBodyParts() {
 
   container.innerHTML = "";
 
-  for (let part in bodyData) {
+  for (let part in appData) {
 
     const button =
       document.createElement("button");
@@ -69,13 +201,60 @@ function showDiseases(part) {
 
   diseaseList.innerHTML = "";
 
-  bodyData[part].forEach(disease => {
+  for (let disease in appData[part]) {
 
-    const li =
-      document.createElement("li");
+    const button =
+      document.createElement("button");
 
-    li.innerText = disease;
+    button.innerText = disease;
 
-    diseaseList.appendChild(li);
+    button.onclick = () =>
+      showExercises(part, disease);
+
+    diseaseList.appendChild(button);
+  }
+}
+
+function showExercises(part, disease) {
+
+  let oldSection =
+    document.getElementById("exercise-section");
+
+  if (oldSection) {
+    oldSection.remove();
+  }
+
+  const section =
+    document.createElement("div");
+
+  section.id = "exercise-section";
+
+  section.innerHTML = `
+    <h2>Egzersizler</h2>
+    <div id="exercise-cards"></div>
+  `;
+
+  document.querySelector(".container")
+    .appendChild(section);
+
+  const cards =
+    document.getElementById("exercise-cards");
+
+  appData[part][disease].forEach(exercise => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "exercise-card";
+
+    card.innerHTML = `
+      <h3>${exercise}</h3>
+      <p>
+        Bu egzersiz ${disease}
+        rehabilitasyonu için önerilir.
+      </p>
+    `;
+
+    cards.appendChild(card);
   });
 }
