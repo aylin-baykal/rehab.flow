@@ -136,100 +136,63 @@ button:hover {
 }
 
 /* GENEL HOTSPOT */
+.image-wrapper {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 3 / 6; /* çok önemli */
+  margin: auto;
+}
+
+.human-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* hotspot base */
 .hotspot {
   position: absolute;
   cursor: pointer;
-  background: rgba(255, 0, 0, 0.25);
+  background: rgba(0,0,0,0);
   border-radius: 50%;
-  transition: 0.2s;
 }
 
 .hotspot:hover {
-  background: rgba(255, 0, 0, 0.5);
-  transform: scale(1.1);
+  background: rgba(37, 99, 235, 0.25);
 }
 
 /* BÖLGELERİN KONUMU */
 
+/* BOYUN */
+.neck { top: 5%; left: 40%; width: 20%; height: 8%; }
+
 /* OMUZ */
-.shoulder {
-  top: 70px;
-  left: 60px;
-  width: 40px;
-  height: 40px;
-}
+.shoulder { top: 12%; left: 20%; width: 60%; height: 10%; }
 
 /* DİRSEK */
-.elbow {
-  top: 140px;
-  left: 40px;
-  width: 35px;
-  height: 35px;
-}
+.elbow { top: 25%; left: 5%; width: 25%; height: 12%; }
 
 /* EL BİLEĞİ */
-.wrist {
-  top: 190px;
-  left: 30px;
-  width: 30px;
-  height: 30px;
-}
-
-/* BOYUN */
-.neck {
-  top: 30px;
-  left: 120px;
-  width: 35px;
-  height: 35px;
-}
+.wrist { top: 38%; left: 0%; width: 20%; height: 10%; }
 
 /* SIRT */
-.back {
-  top: 110px;
-  left: 120px;
-  width: 50px;
-  height: 60px;
-}
+.back { top: 22%; left: 30%; width: 40%; height: 20%; }
 
 /* BEL */
-.waist {
-  top: 170px;
-  left: 120px;
-  width: 45px;
-  height: 40px;
-}
+.waist { top: 40%; left: 30%; width: 40%; height: 10%; }
 
 /* KALÇA */
-.hip {
-  top: 210px;
-  left: 120px;
-  width: 50px;
-  height: 40px;
-}
+.hip { top: 50%; left: 28%; width: 45%; height: 10%; }
 
 /* DİZ */
-.knee {
-  top: 280px;
-  left: 110px;
-  width: 40px;
-  height: 40px;
-}
+.knee { top: 65%; left: 30%; width: 40%; height: 12%; }
 
 /* AYAK BİLEĞİ */
-.ankle {
-  top: 340px;
-  left: 110px;
-  width: 35px;
-  height: 35px;
-}
+.ankle { top: 78%; left: 35%; width: 30%; height: 10%; }
 
 /* AYAK */
-.foot {
-  top: 380px;
-  left: 110px;
-  width: 40px;
-  height: 30px;
-}
+.foot { top: 88%; left: 30%; width: 40%; height: 10%; }
 .human-body {
   width: 300px;
   height: auto;
