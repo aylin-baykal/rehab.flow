@@ -275,3 +275,12 @@ function showExercises(part, disease) {
 function selectBodyPart(part) {
   showDiseases(part);
 }
+function openPanel(panelId) {
+
+  // tüm panelleri kapat
+  document.getElementById("hastaPanel").style.display = "none";
+  document.getElementById("fizyoterapistPanel").style.display = "none";
+
+  // seçileni aç
+  document.getElementById(panelId).style.display = "block";
+}

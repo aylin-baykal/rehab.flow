@@ -69,3 +69,44 @@
 
 </body>
 </html>
+
+<div id="role-selection">
+
+  <h2>Rolünü Seç</h2>
+
+  <button onclick="openPanel('hastaPanel')">
+    🧍 Hasta
+  </button>
+
+  <button onclick="openPanel('fizyoterapistPanel')">
+    🧑‍⚕️ Fizyoterapist
+  </button>
+
+  <!-- HASTA PANEL -->
+<div id="hastaPanel" class="panel">
+
+  <h2>Hasta Modu</h2>
+
+  <p>Vücut bölgesini seç ve egzersizlere ulaş.</p>
+
+  <!-- mevcut anatomi buraya gelecek -->
+  <div id="body-section" class="hidden"></div>
+
+</div>
+
+<!-- FİZYOTERAPİST PANEL -->
+<div id="fizyoterapistPanel" class="panel">
+
+  <h2>Fizyoterapist Paneli</h2>
+
+  <p>Hasta yönetimi ve egzersiz planlama.</p>
+
+  <button onclick="createPatient()">
+    + Hasta Ekle
+  </button>
+
+  <div id="patientList"></div>
+
+</div>
+
+</div>
