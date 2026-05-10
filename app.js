@@ -284,3 +284,68 @@ function openPanel(panelId) {
   // seçileni aç
   document.getElementById(panelId).style.display = "block";
 }
+let patients = [];
+
+function openPanel(panelId) {
+
+  const hasta = document.getElementById("hastaPanel");
+  const fizyo = document.getElementById("fizyoterapistPanel");
+
+  if (hasta) hasta.style.display = "none";
+  if (fizyo) fizyo.style.display = "none";
+
+  document.getElementById(panelId).style.display = "block";
+}
+function createPatient() {
+
+  let name = prompt("Hasta adı gir:");
+
+  if (!name) return;
+
+  patients.push({
+    name: name,
+    exercises: []
+  });
+
+  renderPatients();
+}
+
+function renderPatients() {
+
+  const list = document.getElementById("patientList");
+
+  list.innerHTML = "";
+
+  patients.forEach((p, index) => {
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <p><b>${p.name}</b></p>
+      <button onclick="selectPatient(${index})">
+        Seç
+      </button>
+    `;
+
+    list.appendChild(div);
+  });
+}
+let selectedPatient = null;
+
+function selectPatient(index) {
+
+  selectedPatient = patients[index];
+
+  alert(selectedPatient.name + " seçildi");
+}
+function addExerciseToPatient(exercise) {
+
+  if (!selectedPatient) {
+    alert("Önce hasta seç");
+    return;
+  }
+
+  selectedPatient.exercises.push(exercise);
+
+  alert("Egzersiz eklendi: " + exercise);
+}
