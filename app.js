@@ -162,6 +162,41 @@ const appData = {
   }
 };
 
+const icons = {
+  Omuz: "🦾",
+  Dirsek: "💪",
+  "El Bileği": "✋",
+  Boyun: "🧠",
+  Sırt: "🔙",
+  Bel: "🦴",
+  Kalça: "🦵",
+  Diz: "🦿",
+  "Ayak Bileği": "👣",
+  Ayak: "🦶"
+};
+
+let patients = [];
+let selectedPatient = null;
+
+/* PANEL AÇ/KAPA */
+
+function openPanel(panelId) {
+
+  const hasta =
+    document.getElementById("hastaPanel");
+
+  const fizyo =
+    document.getElementById("fizyoterapistPanel");
+
+  if (hasta) hasta.style.display = "none";
+  if (fizyo) fizyo.style.display = "none";
+
+  document.getElementById(panelId)
+    .style.display = "block";
+}
+
+/* ROL SEÇ */
+
 function selectRole(role) {
 
   document.getElementById("body-section")
@@ -169,6 +204,8 @@ function selectRole(role) {
 
   loadBodyParts();
 }
+
+/* VÜCUT BÖLGELERİ */
 
 function loadBodyParts() {
 
@@ -182,21 +219,8 @@ function loadBodyParts() {
     const button =
       document.createElement("button");
 
-   const icons = {
-  Omuz: "🦾",
-  Dirsek: "💪",
-  "El Bileği": "✋",
-  Boyun: "🧠",
-  Sırt: "🔙",
-  Bel: "🦴",
-  Kalça: "🦵",
-  Diz: "🦿",
-  "Ayak Bileği": "👣",
-  Ayak: "🦶"
-};
-
-button.innerText =
-  `${icons[part] || "📍"} ${part}`;
+    button.innerText =
+      `${icons[part] || "📍"} ${part}`;
 
     button.onclick = () =>
       showDiseases(part);
@@ -204,6 +228,8 @@ button.innerText =
     container.appendChild(button);
   }
 }
+
+/* HASTALIKLAR */
 
 function showDiseases(part) {
 
@@ -228,6 +254,8 @@ function showDiseases(part) {
     diseaseList.appendChild(button);
   }
 }
+
+/* EGZERSİZLER */
 
 function showExercises(part, disease) {
 
@@ -254,51 +282,44 @@ function showExercises(part, disease) {
   const cards =
     document.getElementById("exercise-cards");
 
-  appData[part][disease].forEach(exercise => {
+  appData[part][disease]
+    .forEach(exercise => {
 
-    const card =
-      document.createElement("div");
+      const card =
+        document.createElement("div");
 
-    card.className = "exercise-card";
+      card.className = "exercise-card";
 
-    card.innerHTML = `
-      <h3>${exercise}</h3>
-      <p>
-        Bu egzersiz ${disease}
-        rehabilitasyonu için önerilir.
-      </p>
-    `;
+      card.innerHTML = `
+        <h3>${exercise}</h3>
 
-    cards.appendChild(card);
-  });
+        <p>
+          Bu egzersiz
+          ${disease}
+          rehabilitasyonu için önerilir.
+        </p>
+
+        <button onclick="addExerciseToPatient('${exercise}')">
+          Hastaya Ekle
+        </button>
+      `;
+
+      cards.appendChild(card);
+    });
 }
+
+/* ANATOMİ TIKLAMA */
+
 function selectBodyPart(part) {
   showDiseases(part);
 }
-function openPanel(panelId) {
 
-  // tüm panelleri kapat
-  document.getElementById("hastaPanel").style.display = "none";
-  document.getElementById("fizyoterapistPanel").style.display = "none";
+/* HASTA OLUŞTUR */
 
-  // seçileni aç
-  document.getElementById(panelId).style.display = "block";
-}
-let patients = [];
-
-function openPanel(panelId) {
-
-  const hasta = document.getElementById("hastaPanel");
-  const fizyo = document.getElementById("fizyoterapistPanel");
-
-  if (hasta) hasta.style.display = "none";
-  if (fizyo) fizyo.style.display = "none";
-
-  document.getElementById(panelId).style.display = "block";
-}
 function createPatient() {
 
-  let name = prompt("Hasta adı gir:");
+  let name =
+    prompt("Hasta adı gir:");
 
   if (!name) return;
 
@@ -310,42 +331,63 @@ function createPatient() {
   renderPatients();
 }
 
+/* HASTALARI GÖSTER */
+
 function renderPatients() {
 
-  const list = document.getElementById("patientList");
+  const list =
+    document.getElementById("patientList");
 
   list.innerHTML = "";
 
   patients.forEach((p, index) => {
 
-    const div = document.createElement("div");
+    const div =
+      document.createElement("div");
+
+    div.className = "patient-card";
 
     div.innerHTML = `
       <p><b>${p.name}</b></p>
+
       <button onclick="selectPatient(${index})">
-        Seç
+        Hastayı Seç
       </button>
     `;
 
     list.appendChild(div);
   });
 }
-let selectedPatient = null;
+
+/* HASTA SEÇ */
 
 function selectPatient(index) {
 
   selectedPatient = patients[index];
 
-  alert(selectedPatient.name + " seçildi");
+  alert(
+    selectedPatient.name +
+    " seçildi"
+  );
 }
+
+/* EGZERSİZ ATA */
+
 function addExerciseToPatient(exercise) {
 
   if (!selectedPatient) {
+
     alert("Önce hasta seç");
+
     return;
   }
 
   selectedPatient.exercises.push(exercise);
 
-  alert("Egzersiz eklendi: " + exercise);
+  alert(
+    exercise +
+    " egzersizi " +
+    selectedPatient.name +
+    " hastasına eklendi"
+  );
 }

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fizyoterapi Uygulaması</title>
+  <title>PhysioGuide</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,51 +19,105 @@
       Kişiselleştirilmiş fizyoterapi egzersiz rehberi
     </p>
 
-    <!-- ROLE SELECTION -->
+    <!-- ROL SEÇİMİ -->
     <div id="role-selection">
-      <h2>Kullanıcı Seç</h2>
 
-      <button onclick="selectRole('Hasta')">Hasta</button>
-      <button onclick="selectRole('Fizyoterapist')">Fizyoterapist</button>
+      <h2>Rolünü Seç</h2>
+
+      <button onclick="openPanel('hastaPanel')">
+        🧍 Hasta
+      </button>
+
+      <button onclick="openPanel('fizyoterapistPanel')">
+        🧑‍⚕️ Fizyoterapist
+      </button>
+
     </div>
 
-    <!-- BODY SECTION -->
-    <div id="body-section" class="hidden">
-      <h2>Vücut Bölgesi Seç</h2>
+    <!-- HASTA PANEL -->
+    <div id="hastaPanel" class="panel">
 
+      <h2>Hasta Modu</h2>
+
+      <p>
+        Vücut bölgesini seç ve egzersizlere ulaş.
+      </p>
+
+      <!-- VÜCUT -->
       <div class="body-layout">
 
-        <!-- HUMAN IMAGE + HOTSPOTS -->
         <div class="image-wrapper">
 
-          <img src="assets/body.png" class="human-body" />
+          <img
+            src="assets/body.png"
+            class="human-body"
+          />
 
-          <div class="hotspot neck" onclick="selectBodyPart('Boyun')"></div>
-          <div class="hotspot shoulder" onclick="selectBodyPart('Omuz')"></div>
-          <div class="hotspot elbow" onclick="selectBodyPart('Dirsek')"></div>
-          <div class="hotspot wrist" onclick="selectBodyPart('El Bileği')"></div>
-          <div class="hotspot back" onclick="selectBodyPart('Sırt')"></div>
-          <div class="hotspot waist" onclick="selectBodyPart('Bel')"></div>
-          <div class="hotspot hip" onclick="selectBodyPart('Kalça')"></div>
-          <div class="hotspot knee" onclick="selectBodyPart('Diz')"></div>
-          <div class="hotspot ankle" onclick="selectBodyPart('Ayak Bileği')"></div>
-          <div class="hotspot foot" onclick="selectBodyPart('Ayak')"></div>
+          <!-- HOTSPOTS -->
+          <div class="hotspot neck"
+            onclick="selectBodyPart('Boyun')"></div>
+
+          <div class="hotspot shoulder"
+            onclick="selectBodyPart('Omuz')"></div>
+
+          <div class="hotspot elbow"
+            onclick="selectBodyPart('Dirsek')"></div>
+
+          <div class="hotspot wrist"
+            onclick="selectBodyPart('El Bileği')"></div>
+
+          <div class="hotspot back"
+            onclick="selectBodyPart('Sırt')"></div>
+
+          <div class="hotspot waist"
+            onclick="selectBodyPart('Bel')"></div>
+
+          <div class="hotspot hip"
+            onclick="selectBodyPart('Kalça')"></div>
+
+          <div class="hotspot knee"
+            onclick="selectBodyPart('Diz')"></div>
+
+          <div class="hotspot ankle"
+            onclick="selectBodyPart('Ayak Bileği')"></div>
+
+          <div class="hotspot foot"
+            onclick="selectBodyPart('Ayak')"></div>
 
         </div>
 
-        <!-- BUTTON LIST -->
+        <!-- BUTONLAR -->
         <div id="body-parts"></div>
 
       </div>
+
+      <!-- HASTALIKLAR -->
+      <div id="disease-section" class="hidden">
+
+        <h2>Rahatsızlıklar</h2>
+
+        <div id="disease-list"></div>
+
+      </div>
+
     </div>
 
-    <!-- DISEASE SECTION -->
-    <div id="disease-section" class="hidden">
-      <h2>Rahatsızlıklar</h2>
-      <div id="disease-list"></div>
-    </div>
+    <!-- FİZYOTERAPİST PANEL -->
+    <div id="fizyoterapistPanel" class="panel">
 
-    <!-- EXERCISE SECTION (JS ekliyor) -->
+      <h2>Fizyoterapist Paneli</h2>
+
+      <p>
+        Hasta yönetimi ve egzersiz planlama
+      </p>
+
+      <button onclick="createPatient()">
+        + Hasta Ekle
+      </button>
+
+      <div id="patientList"></div>
+
+    </div>
 
   </div>
 
@@ -69,44 +125,3 @@
 
 </body>
 </html>
-
-<div id="role-selection">
-
-  <h2>Rolünü Seç</h2>
-
-  <button onclick="openPanel('hastaPanel')">
-    🧍 Hasta
-  </button>
-
-  <button onclick="openPanel('fizyoterapistPanel')">
-    🧑‍⚕️ Fizyoterapist
-  </button>
-
-  <!-- HASTA PANEL -->
-<div id="hastaPanel" class="panel">
-
-  <h2>Hasta Modu</h2>
-
-  <p>Vücut bölgesini seç ve egzersizlere ulaş.</p>
-
-  <!-- mevcut anatomi buraya gelecek -->
-  <div id="body-section" class="hidden"></div>
-
-</div>
-
-<!-- FİZYOTERAPİST PANEL -->
-<div id="fizyoterapistPanel" class="panel">
-
-  <h2>Fizyoterapist Paneli</h2>
-
-  <p>Hasta yönetimi ve egzersiz planlama.</p>
-
-  <button onclick="createPatient()">
-    + Hasta Ekle
-  </button>
-
-  <div id="patientList"></div>
-
-</div>
-
-</div>
