@@ -6,133 +6,66 @@
   <title>Fizyoterapi Uygulaması</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="container">
 
     <h1>PhysioGuide</h1>
 
-<p class="subtitle">
-  Kişiselleştirilmiş fizyoterapi
-  egzersiz rehberi
-</p>
+    <p class="subtitle">
+      Kişiselleştirilmiş fizyoterapi egzersiz rehberi
+    </p>
 
+    <!-- ROLE SELECTION -->
     <div id="role-selection">
       <h2>Kullanıcı Seç</h2>
 
-      <button onclick="selectRole('Hasta')">
-        Hasta
-      </button>
-
-      <button onclick="selectRole('Fizyoterapist')">
-        Fizyoterapist
-      </button>
+      <button onclick="selectRole('Hasta')">Hasta</button>
+      <button onclick="selectRole('Fizyoterapist')">Fizyoterapist</button>
     </div>
 
+    <!-- BODY SECTION -->
     <div id="body-section" class="hidden">
       <h2>Vücut Bölgesi Seç</h2>
 
-    <div class="body-layout">
+      <div class="body-layout">
 
-  <div class="human-container">
+        <!-- HUMAN IMAGE + HOTSPOTS -->
+        <div class="image-wrapper">
 
-    <img
-      <div class="human-container">
+          <img src="assets/body.png" class="human-body" />
 
-  <div class="human-container">
-  <div class="human-wrapper">
+          <div class="hotspot shoulder" onclick="selectBodyPart('Omuz')"></div>
+          <div class="hotspot elbow" onclick="selectBodyPart('Dirsek')"></div>
+          <div class="hotspot wrist" onclick="selectBodyPart('El Bileği')"></div>
+          <div class="hotspot neck" onclick="selectBodyPart('Boyun')"></div>
+          <div class="hotspot back" onclick="selectBodyPart('Sırt')"></div>
+          <div class="hotspot waist" onclick="selectBodyPart('Bel')"></div>
+          <div class="hotspot hip" onclick="selectBodyPart('Kalça')"></div>
+          <div class="hotspot knee" onclick="selectBodyPart('Diz')"></div>
+          <div class="hotspot ankle" onclick="selectBodyPart('Ayak Bileği')"></div>
+          <div class="hotspot foot" onclick="selectBodyPart('Ayak')"></div>
 
-<svg viewBox="0 0 200 500" class="human-svg">
+        </div>
 
-  <!-- ARKA PLAN (basit silhouette placeholder) -->
-  <rect x="80" y="20" width="40" height="40" fill="#ddd"/>
-  <rect x="70" y="60" width="60" height="80" fill="#ddd"/>
-  <rect x="75" y="140" width="50" height="40" fill="#ddd"/>
-  <rect x="70" y="180" width="60" height="50" fill="#ddd"/>
-  <rect x="75" y="230" width="50" height="120" fill="#ddd"/>
+        <!-- BUTTON LIST -->
+        <div id="body-parts"></div>
 
-  <!-- 🔥 TIKLANABİLİR KATMAN (TRANSPARENT) -->
-
-  <rect class="hit shoulder"
-    x="60" y="70" width="80" height="30"
-    onclick="selectBodyPart('Omuz')"/>
-
-  <rect class="hit neck"
-    x="85" y="30" width="30" height="30"
-    onclick="selectBodyPart('Boyun')"/>
-
-  <rect class="hit elbow"
-    x="40" y="120" width="30" height="40"
-    onclick="selectBodyPart('Dirsek')"/>
-
-  <rect class="hit wrist"
-    x="30" y="160" width="25" height="25"
-    onclick="selectBodyPart('El Bileği')"/>
-
-  <rect class="hit back"
-    x="80" y="100" width="40" height="80"
-    onclick="selectBodyPart('Sırt')"/>
-
-  <rect class="hit waist"
-    x="80" y="180" width="40" height="40"
-    onclick="selectBodyPart('Bel')"/>
-
-  <rect class="hit hip"
-    x="75" y="220" width="50" height="40"
-    onclick="selectBodyPart('Kalça')"/>
-
-  <rect class="hit knee"
-    x="80" y="300" width="40" height="50"
-    onclick="selectBodyPart('Diz')"/>
-
-  <rect class="hit ankle"
-    x="85" y="370" width="30" height="30"
-    onclick="selectBodyPart('Ayak Bileği')"/>
-
-  <rect class="hit foot"
-    x="75" y="400" width="50" height="30"
-    onclick="selectBodyPart('Ayak')"/>
-
-</svg>
-
-</div>
-</div>
-
-  <!-- TIKLANABİLİR BÖLGELER -->
-
-  <div class="hotspot shoulder" onclick="selectBodyPart('Omuz')"></div>
-  <div class="hotspot elbow" onclick="selectBodyPart('Dirsek')"></div>
-  <div class="hotspot wrist" onclick="selectBodyPart('El Bileği')"></div>
-  <div class="hotspot neck" onclick="selectBodyPart('Boyun')"></div>
-  <div class="hotspot back" onclick="selectBodyPart('Sırt')"></div>
-  <div class="hotspot waist" onclick="selectBodyPart('Bel')"></div>
-  <div class="hotspot hip" onclick="selectBodyPart('Kalça')"></div>
-  <div class="hotspot knee" onclick="selectBodyPart('Diz')"></div>
-  <div class="hotspot ankle" onclick="selectBodyPart('Ayak Bileği')"></div>
-  <div class="hotspot foot" onclick="selectBodyPart('Ayak')"></div>
-
-</div>
-    />
-
-  </div>
-
-  <div id="body-parts"></div>
-
-</div>
-  </div>
-
-  <div id="body-parts"></div>
-
+      </div>
     </div>
 
+    <!-- DISEASE SECTION -->
     <div id="disease-section" class="hidden">
       <h2>Rahatsızlıklar</h2>
-
-      <ul id="disease-list"></ul>
+      <div id="disease-list"></div>
     </div>
+
+    <!-- EXERCISE SECTION (JS ekliyor) -->
 
   </div>
 
   <script src="app.js"></script>
+
 </body>
 </html>
